@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <style>
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      .container {
+        flex: 1 0 auto;
+        margin-bottom: 3em;
+      }
+
+      footer {
+        padding-top: 1em;
+        padding-top: 3em;
+      }
+    </style>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Weatheromo</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <form action="{% url 'city-weather' %}" method="POST">
+        {% csrf_token %} {{ form.as_p }}
+
+        <input type="submit" value="Submit" />
+      </form>
+
+      {% if weather_data %}
+      <div class="center">
+        <div style="font-size: 48px">
+          {{ weather_data.name }} {{ weather_data.country }}
+        </div>
+        {% for wt in weather_data.weather %}
+        <p style="font-size: 24px">{{ wt.main }} - {{wt.description}}</p>
+        <img src="http://openweathermap.org/img/wn/{{wt.icon}}@2x.png" />
+        {% endfor %}
+      </div>
+
+      <table class="striped">
+        <tr>
+          <th>City</th>
+          <td>{{ weather_data.name }}</td>
+        </tr>
+        <tr>
+          <th>Country</th>
+          <td>{{ weather_data.sys.country }}</td>
+        </tr>
+        <tr>
+          <th>Weather details</th>
+          <td>
+            {% for wt in weather_data.weather %}
+            <p>{{ wt.main }} - {{wt.description}}</p>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <th>Cloudiness</th>
+          <td>{{ weather_data.clouds.all }}%</td>
+        </tr>
+        <tr>
+          <th>Temperature</th>
+          <td>{{ weather_data.main.temp }} <span>&#8451;</span></td>
+        </tr>
+        <tr>
+          <th>Feels like Temperature</th>
+          <td>{{ weather_data.main.feels_like }} <span>&#8451;</span></td>
+        </tr>
+        <tr>
+          <th>Max Temperature</th>
+          <td>{{ weather_data.main.temp_max }} <span>&#8451;</span></td>
+        </tr>
+        <tr>
+          <th>Min Temperature</th>
+          <td>{{ weather_data.main.temp_min }} <span>&#8451;</span></td>
+        </tr>
+        <tr>
+          <th>Pressure</th>
+          <td>{{ weather_data.main.pressure }} hPa</td>
+        </tr>
+        <tr>
+          <th>Humidity</th>
+          <td>{{ weather_data.main.humidity }}%</td>
+        </tr>
+        <tr>
+          <th>Wind Speed</th>
+          <td>{{ weather_data.wind.speed }} m/sec</td>
+        </tr>
+        <tr>
+          <th>Wind Degree</th>
+          <td>{{ weather_data.wind.deg }} degrees</td>
+        </tr>
+      </table>
+    </div>
+    {% else %} {% endif %}
+
+    <footer class="page-footer">
+      <div class="footer-copyright">
+
+      </div>
+    </footer>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $("select").formSelect();
+      });
+    </script>
+  </body>
+</html>
