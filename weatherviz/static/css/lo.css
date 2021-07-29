@@ -13,11 +13,12 @@ body {
 .login-box {
     margin: 0;
     margin-top: 1%;
-    background-color: #333335;
+    background-color: #b2b0bb;
     width: 70%;
     height: 50%;
     border: 1px solid #141313;
     padding: 10px;
+    border-radius: 20pt;
 }
 
 .login-box form {
