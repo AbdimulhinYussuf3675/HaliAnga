@@ -1,11 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, Http404,HttpResponseRedirect
-from .services import get_weather_data_for_city
+import requests
+from django.conf import settings
 from .forms import CityForm,UserRegistratinForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login
 from  django.contrib import messages
-
+from .models import Profile,OpenWeatherCity
 
 def register(request):
     if request.method == 'POST':
@@ -46,3 +47,17 @@ def view_weather_data_for_city(request):
         weather_data = None
 
     return render(request,"weatherviz/index.html",{"weather_data": weather_data,"form": form})
+
+import requests
+
+from django.conf import settings
+
+
+def get_weather_data_for_city(city_id):
+    api_url = (
+        settings.OPEN_WATHER_BASE_URL +
+        f"weather?id={city_id}" +
+        f"&appid={settings.OPEN_WEATHER_API_KEY}&units=metric"
+    )
+    resp = requests.get(api_url)
+    return resp.json()
