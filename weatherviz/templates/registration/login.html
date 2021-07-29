@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'registration/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +22,7 @@
     <br>
     <br>
     <br>
-    
+
     <section class="login-form">
         <div class="row justify-content-center">
             <div class="login-box col-lg-4 col-md-6 col-sm-12">
@@ -30,18 +30,19 @@
                 {% if form.errors %}
                 <div class="alert alert-danger" role="alert">
                     Wrong username or Password
-                  </div>
+                </div>
                 {% endif %}
                 <form action="{% url 'login' %}" method="post">
 
                     {{ form.as_p }}
                     {% csrf_token %}
-                    <input type="hidden" name="next" value="{{ next }}" />  
+                    <input type="hidden" name="next" value="{{ next }}" />
                     <p><input type="submit" value="log in"></p>
                 </form>
 
                 <div class="signup">
-                    <p class="no-account" style="color: blanchedalmond;"> Don't have account ? <a href="{%url 'register' %} " class="signup-link"> signup </a> </p>
+                    <p class="no-account" style="color: blanchedalmond;"> Don't have account ? <a
+                            href="{%url 'register' %} " class="signup-link"> signup </a> </p>
                 </div>
 
             </div>
@@ -52,18 +53,29 @@
 
     </section>
     {% endblock %}
+    <footer class="footer footer-expand-lg footer-dark bg-dark">
+        <div class="footer-copyright">
+            <div class="container-fluid" style="text-align: center;">
+                © 2021 Abdimulhin &lt;/&gt; with &hearts; by
+                <a class="white-text text-lighten-4"
+                    href="https://github.com/AbdimulhinYussuf3675/instagram_clone.git">Abdimulhin
+                    Yussuf</a>
+            </div>
 
+
+        </div>
+    </footer>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 
 </body>
 
