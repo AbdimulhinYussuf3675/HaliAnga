@@ -46,7 +46,7 @@ def view_weather_data_for_city(request):
         form = CityForm()
         weather_data = None
 
-    return render(request,"weatherviz/index.html",{"weather_data": weather_data,"form": form})
+    return render(request,"weather/index.html",{"weather_data": weather_data,"form": form})
 
 import requests
 
