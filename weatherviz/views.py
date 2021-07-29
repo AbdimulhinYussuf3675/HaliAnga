@@ -4,6 +4,7 @@ from .services import get_weather_data_for_city
 from .forms import CityForm,UserRegistratinForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate,login
+from  django.contrib import messages
 
 
 def register(request):
@@ -23,7 +24,7 @@ def register(request):
 
         else:
             messages.error(request ,'Error creating your account')
-            return render(request,'register.html' , {'user_form':user_form})
+            return render(request,'registration/register.html' , {'user_form':user_form,'messages':messages})
 
 
     else:
