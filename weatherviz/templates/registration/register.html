@@ -28,13 +28,13 @@
  
                 <form  method="post">
 
-                    {{ user_form.as_p }}
+                    
                     {% csrf_token %}
-                   
+                   {{ user_form.as_p }}
                     <p><input type="submit" value="sign Up"></p>
                 </form>
                 <div class="signup">
-                    <p class="no-account" style="color: blanchedalmond;"> Have  an account ? <a href="{%url 'login' %} " class="signup-link"> Login </a> </p>
+                    <p class="no-account" style="color: rgb(92, 216, 34);"> Have  an account ? <a href="{%url 'login' %} " class="signup-link"> Login </a> </p>
                 </div>
 
             </div>
