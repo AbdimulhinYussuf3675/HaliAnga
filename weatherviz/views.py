@@ -48,11 +48,6 @@ def view_weather_data_for_city(request):
 
     return render(request,"weather/index.html",{"weather_data": weather_data,"form": form})
 
-import requests
-
-from django.conf import settings
-
-
 def get_weather_data_for_city(city_id):
     api_url = (
         settings.OPEN_WATHER_BASE_URL +
