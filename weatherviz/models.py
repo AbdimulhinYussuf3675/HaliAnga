@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from cloudinary.models import CloudinaryField
+from django.conf import settings
 
 
 class OpenWeatherCity(models.Model):
@@ -21,3 +23,22 @@ class OpenWeatherCity(models.Model):
 
     def __str__(self):
         return f"{self.open_weather_id} - {self.name}, {self.country}"
+
+class Profile(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    location = models.CharField(max_length=50, blank=True)
+    photo = CloudinaryField('image')
+    bio = models.TextField(max_length=200, default= 'Hello friends', blank=True)
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile():
+        self.delete()
+
+    def __str__(self):
+        return self.user.username
+
+    @classmethod
+    def update_profile():
+        self.update()
