@@ -1,6 +1,6 @@
 # Hali Anga
 
-> "Hali_Anga" is a tool that helps to users to enter their city to forecast the weather.
+> "Hali_Anga" is an app that provides users with weather conditions for the places of their choice
 
 
 ## Built With
